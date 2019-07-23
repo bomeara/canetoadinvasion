@@ -4,6 +4,9 @@ title: "Cane Toad Invasion"
 
 [More information about cane toads in Florida](https://www.smithsonianmag.com/smart-news/plague-invasive-cane-toads-overruns-florida-community-180971797/)
 
+This map shows the spread of cane toads through time in Australia. It uses information from [GBIF](http://www.gbif.org).
+
+
 ```{r, echo=FALSE, cache=FALSE, include=FALSE}
 source("R/packages.R")
 source("R/functions.R")
