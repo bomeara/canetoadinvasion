@@ -18,6 +18,21 @@ GetAustraliaElevations <- function() {
   return(elevations <- raster::getData(name="alt", country='au'))
 }
 
+GetMaximumDistancesAndArea <- function(year, locations) {
+  locations <- locations[which(locations$year<=year),]
+  if(nrow(locations)==0) {
+    return(c(year=year, northsouthdistancekm=0, eastwestdistancekm=0, areakm2=0, northsouthdistancemile=0, eastwestdistancemile=0, areami2=0))
+
+  }
+  northsouthdistancekm <- max(sp::spDists(x=matrix(c(min(locations$decimalLongitude),max(locations$decimalLongitude),0,0),byrow=FALSE, ncol=2), longlat=TRUE))
+  eastwestdistancekm <- max(sp::spDists(x=matrix(c(0, 0, min(locations$decimalLatitude),max(locations$decimalLatitude)),byrow=FALSE, ncol=2), longlat=TRUE))
+  northsouthdistancemile <- northsouthdistancekm * 0.621371
+  eastwestdistancemile <- eastwestdistancekm * 0.621371
+  areakm2 <- GeoRange::CHullAreaEarth(longs=locations$decimalLongitude, lats=locations$decimalLatitude)
+  areami2 <- areakm2 * 0.386102
+  return(c(year=year, northsouthdistancekm=northsouthdistancekm, eastwestdistancekm=eastwestdistancekm, areakm2=areakm2, northsouthdistancemile=northsouthdistancemile, eastwestdistancemile=eastwestdistancemile, areami2=areami2))
+}
+
 
 RenderAustraliaMap <- function(elevations) {
 

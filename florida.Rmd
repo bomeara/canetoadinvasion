@@ -4,7 +4,19 @@ title: "Cane Toad Invasion"
 
 [More information about cane toads in Florida](https://www.smithsonianmag.com/smart-news/plague-invasive-cane-toads-overruns-florida-community-180971797/)
 
-This map shows the spread of cane toads through time in Australia. It uses information from [GBIF](http://www.gbif.org).
+**Investigation**
+
+Using the data set & map, where has the cane toad lived over time?  How did it spread?
+
+**Prediction**
+
+What will happen in the next 5 years?  How will this impact the biodiversity of the area?
+
+**Figures**
+
+There are three figures using information from [GBIF](http://www.gbif.org).
+
+The first is an animated map showing spread of toads over time.
 
 
 ```{r, echo=FALSE, cache=FALSE, include=FALSE}
@@ -25,3 +37,29 @@ my_map <- ggplot() + geom_polygon(data = fla, aes(x=long, y = lat, group = group
 
 animate(my_map, fps=4)
 ```
+
+```{r, cache = TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+years <- seq(from=min(locations$year)-1, to=max(locations$year), by=1)
+extents <- as.data.frame(t(sapply(years, GetMaximumDistancesAndArea, locations=locations)))
+```
+
+This shows growth of the extent of land occupied: the maximum distance in miles from records at the extreme of the range.
+
+```{r, cache = TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+extent.lengths <- data.frame(year=rep(extents$year, 2), miles=c(extents$northsouthdistancemile, extents$eastwestdistancemile), distance=c(rep("North-South", length(extents$northsouthdistancemile)), rep("East-West", length(extents$eastwestdistancemile))))
+lengths.plot <- ggplot(data=extent.lengths, aes(x=year, y=miles, group=distance)) + geom_line(aes(color=distance)) + ylab("Miles separating the species at the extreme") + xlab("Year")
+print(lengths.plot)
+```
+
+This shows growth of the area occupied over time: square miles versus time. Note that this is done by drawing a polygon around all the included points, but there may be areas of the enclosed range that actually do not have cane toads (so this may be an overestimate).
+
+```{r, cache = TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+areas.plot <- ggplot(data=extents, aes(x=year, y=areami2)) + geom_line() + ylab("Square miles occupied") + xlab("Year")
+print(areas.plot)
+```
+
+```{r, cache = TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+write.csv(extents, file="./FloridaExtents.csv")
+```
+
+You can download the estimates of the spread of the species over time as [FloridaExtents.csv](FloridaExtents.csv).
