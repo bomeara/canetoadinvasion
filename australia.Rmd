@@ -2,12 +2,16 @@
 title: "Cane Toad Invasion"
 ---
 
-Cane toads invade
+This map shows the spread of cane toads through time in Australia. It uses information from [GBIF](http://www.gbif.org).
 
 ```{r, echo=FALSE, cache=FALSE, include=FALSE}
 source("R/packages.R")
 source("R/functions.R")
 ```
+
+
+[Information about cane toads in Australia](https://www.environment.nsw.gov.au/topics/animals-and-plants/pest-animals-and-weeds/pest-animals/cane-toads)
+
 
 ```{r, cache = TRUE, echo=FALSE, include=FALSE}
   locations <- GetCaneToadLocations(country="au")

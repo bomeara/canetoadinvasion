@@ -2,9 +2,25 @@
 title: "Cane Toad Invasion"
 ---
 
-Cane toads invade
+Cane toads are large, poisonous toads native to South America but which are spreading in [Australia](australia.html) and [Florida](florida.html).
 
-```{r, echo=FALSE, cache=FALSE, include=FALSE}
-source("R/packages.R")
-source("R/functions.R")
+**Background information**
+
+* [What is a cane toad?](https://eol.org/pages/333309)
+* [Invasive Species Impact Biodiversity from ActionBioScience](http://www.actionbioscience.org/biodiversity/simberloff.html)
+* [Strange facts about cane toads from Mental Floss](http://mentalfloss.com/article/75879/10-bumpy-facts-about-cane-toads)
+
+**Videos**
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_url("https://www.youtube.com/embed/rI8IiLqIEV0", height = "400px")
 ```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::include_url("https://player.vimeo.com/video/49886782?title=0&byline=0&portrait=0", height="400px")
+```
+
+**Investigation**
+
+Using [One Zoom](https://www.onezoom.org/life/@Rhinella_schneideri=120195#x658,y210,w0.2677), what are the Cane Toad’s closest relatives? Are other relative of the cane toad also invasive species?  Why do you think that? 

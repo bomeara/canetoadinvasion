@@ -2,7 +2,7 @@
 title: "Cane Toad Invasion"
 ---
 
-Cane toads invade
+[More information about cane toads in Florida](https://www.smithsonianmag.com/smart-news/plague-invasive-cane-toads-overruns-florida-community-180971797/)
 
 ```{r, echo=FALSE, cache=FALSE, include=FALSE}
 source("R/packages.R")
