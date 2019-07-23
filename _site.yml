@@ -1,0 +1,7 @@
+name: "canetoadinvasion"
+navbar:
+  title: "Cane Toad Invasion"
+  left:
+    - text: "Home"
+      href: index.html
+output_dir: "docs"

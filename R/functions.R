@@ -14,24 +14,29 @@ GetCaneToadLocations <- function() {
 }
 
 #' Get map of Australia
-GetAustraliaMap <- function() {
-elevations <- raster::getData(name="alt", country='AUS')
+GetAustraliaElevations <- function() {
+  return(elevations <- raster::getData(name="alt", country='AUS'))
+}
+
+
+RenderAustraliaMap <- function(elevations) {
+
   elmat <- matrix(raster::extract(elevations, raster::extent(elevations), buffer = 1000), nrow = ncol(elevations), ncol = nrow(elevations))
   ambmat <- ambient_shade(elmat)
-  elmat %>%
+  return(elmat %>%
     sphere_shade(texture = "desert") %>%
     add_water(detect_water(elmat), color = "desert") %>%
     add_shadow(ray_shade(elmat, zscale = 3, maxsearch = 300), 0.5) %>%
     add_shadow(ambmat, 0.5) %>%
-    plot_3d(elmat, zscale = 10, fov = 0, theta = 135, zoom = 0.75, phi = 45, windowsize = c(1000, 800))
-  return(render_snapshot())
+    plot_3d(elmat, zscale = 10, fov = 0, theta = 135, zoom = 0.75, phi = 45, windowsize = c(1000, 800)))
 }
 
 
 #' Add locations to map
 #'
-AddLocations <- function(elevations, locations) {
+AddLocations <- function(elevations, locations, my_plot) {
   plot_object <- geoviz::add_gps_to_rayshader(elevations, lat=locations$decimalLatitude, lon=locations$decimalLongitude, alt=rep(10000, length(locations$decimalLongitude)),  clamp_to_ground=TRUE, as_line=FALSE, zscale=10)
+  return(plot_object)
 }
 
 #' Download a map image from the ArcGIS REST API using Will Bishop's code
