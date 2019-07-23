@@ -4,4 +4,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Australia"
+      href: australia.html
+    - text: "Florida"
+      href: florida.html
 output_dir: "docs"

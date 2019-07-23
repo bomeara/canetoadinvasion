@@ -3,19 +3,19 @@
 #' Uses gbif package to get records by year.
 #'
 #' @return A tibble with all info returned by gbif::occ_search, plus a column for year
-GetCaneToadLocations <- function() {
+GetCaneToadLocations <- function(country=NULL, stateProvince=NULL) {
   years <- seq(from=1930, to=as.integer(format(Sys.Date(), "%Y")), by=1)
-  gbif_by_year <- function(year) {
-    return(rgbif::occ_search(scientificName = "Rhinella marina", country="AU", eventDate=year, limit=199999, hasCoordinate=TRUE)$data)
+  gbif_by_year <- function(year, country, stateProvince) {
+    return(rgbif::occ_search(scientificName = "Rhinella marina", country=country, stateProvince=stateProvince, eventDate=year, limit=199999, hasCoordinate=TRUE)$data)
   }
-  locations <- dplyr::bind_rows(sapply(years, gbif_by_year))
-  locations$year <- lubridate::year(locations$eventDate)
+  locations <- dplyr::bind_rows(sapply(years, gbif_by_year, country=country, stateProvince=stateProvince))
+  locations$year <- as.integer(lubridate::year(locations$eventDate))
   return(locations)
 }
 
 #' Get map of Australia
 GetAustraliaElevations <- function() {
-  return(elevations <- raster::getData(name="alt", country='AUS'))
+  return(elevations <- raster::getData(name="alt", country='au'))
 }
 
 
