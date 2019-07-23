@@ -13,8 +13,8 @@ source("R/functions.R")
   locations <- GetCaneToadLocations()
 ```
 
-```{r}
-library(leaflet)
-leaflet() %>% addTiles() %>%
-  setView(-27.833, 133.583, zoom = 4)
+```{r, cache = TRUE, echo=FALSE}
+aus <- ggplot2::map_data("world", "Australia")
+my_map <- ggplot() + geom_polygon(data = aus, aes(x=long, y = lat, group = group)) + coord_fixed(1.3) + geom_point(data=locations, aes(x=locations$decimalLongitude, y=locations$decimalLatitude), col="red")
+print(my_map)
 ```

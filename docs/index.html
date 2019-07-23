@@ -14,7 +14,7 @@
 
 <title>Cane Toad Invasion</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -23,14 +23,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.2/leaflet.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -315,15 +307,24 @@ $(document).ready(function () {
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     select</code></pre>
-<pre class="r"><code>  locations &lt;- GetCaneToadLocations()</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;geojsonio&#39;:
+##   method         from 
+##   print.location dplyr</code></pre>
+<pre><code>## 
+## Attaching package: &#39;geojsonio&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     pretty</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gganimate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:raster&#39;:
+## 
+##     animate</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;crul&#39;:
 ##   method                 from
 ##   as.character.form_file httr</code></pre>
-<pre class="r"><code>library(leaflet)
-leaflet() %&gt;% addTiles() %&gt;%
-  setView(-27.833, 133.583, zoom = 4)</code></pre>
-<div id="htmlwidget-2dde4fd013f51c0c7c2f" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2dde4fd013f51c0c7c2f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[133.583,-27.833],4,[]]},"evals":[],"jsHooks":[]}</script>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
 
 
