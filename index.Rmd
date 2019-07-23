@@ -9,16 +9,12 @@ source("R/packages.R")
 source("R/functions.R")
 ```
 
-```{r, cache = TRUE}
+```{r, cache = TRUE, echo=FALSE}
   locations <- GetCaneToadLocations()
 ```
 
 ```{r}
 library(leaflet)
 leaflet() %>% addTiles() %>%
-  setView(-93.65, 42.0285, zoom = 17) %>%
-  addPopups(
-    -93.65, 42.0285,
-    'Here is the <b>Department of Statistics</b>, ISU'
-  )
+  setView(-27.833, 133.583, zoom = 4)
 ```
